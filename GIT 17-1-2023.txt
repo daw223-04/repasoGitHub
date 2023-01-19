@@ -1,0 +1,266 @@
+--------------Crear un proyecto nuevo
+user1@i504:~$ cd Escritorio/
+user1@i504:~/Escritorio$ cd p
+phpDocumentor/ proyectosGit/  prueba/        
+user1@i504:~/Escritorio$ cd proyectosGit/
+user1@i504:~/Escritorio/proyectosGit$ git init prueba01
+ayuda: Using 'master' as the name for the initial branch. This default branch name
+ayuda: is subject to change. To configure the initial branch name to use in all
+ayuda: of your new repositories, which will suppress this warning, call:
+ayuda: 
+ayuda: 	git config --global init.defaultBranch <name>
+ayuda: 
+ayuda: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+ayuda: 'development'. The just-created branch can be renamed via this command:
+ayuda: 
+ayuda: 	git branch -m <name>
+Inicializado repositorio Git vacío en /home/user1/Escritorio/proyectosGit/prueba01/.git/
+user1@i504:~/Escritorio/proyectosGit$ cd prueba01/
+user1@i504:~/Escritorio/proyectosGit/prueba01$ ls -la
+total 12
+drwxr-xr-x 3 user1 user1 4096 ene 17 12:09 .
+drwxr-xr-x 3 user1 user1 4096 ene 17 12:09 ..
+drwxr-xr-x 7 user1 user1 4096 ene 17 12:09 .git
+
+---------------Ver el estado del repositorio
+user1@i504:~/Escritorio/proyectosGit/prueba01$ git status
+En la rama master
+
+No hay commits todavía
+
+no hay nada para confirmar (crea/copia archivos y usa "git add" para hacerles seguimiento)
+user1@i504:~/Escritorio/proyectosGit/prueba01$ touch README.md
+user1@i504:~/Escritorio/proyectosGit/prueba01$ nano README.md
+
+	#Demo de Git
+
+user1@i504:~/Escritorio/proyectosGit/prueba01$ git status
+En la rama master
+
+No hay commits todavía
+
+Archivos sin seguimiento:
+  (usa "git add <archivo>..." para incluirlo a lo que se será confirmado)
+	README.md
+
+no hay nada agregado al commit pero hay archivos sin seguimiento presentes (usa "git add" para hacerles seguimiento)
+user1@i504:~/Escritorio/proyectosGit/prueba01$ git add README.md 
+user1@i504:~/Escritorio/proyectosGit/prueba01$ git status
+En la rama master
+
+No hay commits todavía
+
+Cambios a ser confirmados:
+  (usa "git rm --cached <archivo>..." para sacar del área de stage)
+	nuevo archivo:  README.md
+
+user1@i504:~/Escritorio/proyectosGit/prueba01$ git commit -m "contenido inicial de README"
+[master (commit-raíz) 86a2944] contenido inicial de README
+ 1 file changed, 1 insertion(+)
+ create mode 100644 README.md
+user1@i504:~/Escritorio/proyectosGit/prueba01$ git status
+En la rama master
+nada para hacer commit, el árbol de trabajo está limpio
+
+-------------Modificar un fichero ya commiteado
+user1@i504:~/Escritorio/proyectosGit/prueba01$ nano README.md
+
+	#Demo de Git
+	segunda linea
+
+user1@i504:~/Escritorio/proyectosGit/prueba01$ git status
+En la rama master
+Cambios no rastreados para el commit:
+  (usa "git add <archivo>..." para actualizar lo que será confirmado)
+  (usa "git restore <archivo>..." para descartar los cambios en el directorio de trabajo)
+	modificado:     README.md
+
+sin cambios agregados al commit (usa "git add" y/o "git commit -a")
+
+user1@i504:~/Escritorio/proyectosGit/prueba01$ git commit -a -m "Segunda modificacion al README"
+[master f6c858c] Segunda modificacion al README
+ 1 file changed, 1 insertion(+)
+user1@i504:~/Escritorio/proyectosGit/prueba01$ git status
+En la rama master
+nada para hacer commit, el árbol de trabajo está limpio
+
+---------------
+user1@i504:~/Escritorio/proyectosGit/prueba01$ touch index.html
+user1@i504:~/Escritorio/proyectosGit/prueba01$ nano index.html
+
+	<h1>Hola</h1>
+
+user1@i504:~/Escritorio/proyectosGit/prueba01$ git status
+En la rama master
+Archivos sin seguimiento:
+  (usa "git add <archivo>..." para incluirlo a lo que se será confirmado)
+	index.html
+
+no hay nada agregado al commit pero hay archivos sin seguimiento presentes (usa "git add" para hacerles seguimiento)
+
+user1@i504:~/Escritorio/proyectosGit/prueba01$ git add .
+user1@i504:~/Escritorio/proyectosGit/prueba01$ git commit -m "Tercer commit"
+[master 3f67264] Tercer commit
+ 1 file changed, 1 insertion(+)
+ create mode 100644 index.html
+
+user1@i504:~/Escritorio/proyectosGit/prueba01$ nano README.md
+
+#Demo de Git
+segunda linea
+tercera linea
+
+user1@i504:~/Escritorio/proyectosGit/prueba01$ touch otro.txt
+user1@i504:~/Escritorio/proyectosGit/prueba01$ nano otro.txt
+
+dsnhlkdsnjkndsv
+
+user1@i504:~/Escritorio/proyectosGit/prueba01$ git add .
+user1@i504:~/Escritorio/proyectosGit/prueba01$ git commit -m "Otro commit mas"
+[master 00be618] Otro commit mas
+ 2 files changed, 2 insertions(+)
+ create mode 100644 otro.txt
+user1@i504:~/Escritorio/proyectosGit/prueba01$ git status
+En la rama master
+nada para hacer commit, el árbol de trabajo está limpio
+user1@i504:~/Escritorio/proyectosGit/prueba01$ nano README.md
+
+#Demo de Git
+segunda linea
+tercera linea
+cuarta linea
+
+user1@i504:~/Escritorio/proyectosGit/prueba01$ git add .
+user1@i504:~/Escritorio/proyectosGit/prueba01$ git status
+En la rama master
+Cambios a ser confirmados:
+  (usa "git restore --staged <archivo>..." para sacar del área de stage)
+	modificado:     README.md
+
+user1@i504:~/Escritorio/proyectosGit/prueba01$ git reset HEAD README.md
+Cambios fuera del área de stage tras el reset:
+M	README.md
+user1@i504:~/Escritorio/proyectosGit/prueba01$ git status
+En la rama master
+Cambios no rastreados para el commit:
+  (usa "git add <archivo>..." para actualizar lo que será confirmado)
+  (usa "git restore <archivo>..." para descartar los cambios en el directorio de trabajo)
+	modificado:     README.md
+
+sin cambios agregados al commit (usa "git add" y/o "git commit -a")
+
+user1@i504:~/Escritorio/proyectosGit/prueba01$ git add .
+user1@i504:~/Escritorio/proyectosGit/prueba01$ nano README.md
+#Demo de Git
+segunda linea
+tercera linea
+cuarta linea
+quinta linea
+
+user1@i504:~/Escritorio/proyectosGit/prueba01$ git status
+En la rama master
+Cambios a ser confirmados:
+  (usa "git restore --staged <archivo>..." para sacar del área de stage)
+	modificado:     README.md
+
+Cambios no rastreados para el commit:
+  (usa "git add <archivo>..." para actualizar lo que será confirmado)
+  (usa "git restore <archivo>..." para descartar los cambios en el directorio de trabajo)
+	modificado:     README.md
+
+
+---------------LOGS
+user1@i504:~/Escritorio/proyectosGit/prueba01$ git log
+commit 00be6183c0435f9650b1293431ea443f0bd1ad69 (HEAD -> master)
+Author: Aitor <aitor.diez@iesjulianmarias.es>
+Date:   Tue Jan 17 12:24:54 2023 +0100
+
+    Otro commit mas
+
+commit 3f672642d5ce7886c0235996521c7cc6b1b5f0d7
+Author: Aitor <aitor.diez@iesjulianmarias.es>
+Date:   Tue Jan 17 12:22:27 2023 +0100
+
+    Tercer commit
+
+commit f6c858c495b302d312427ede69f9d071a70c3646
+Author: Aitor <aitor.diez@iesjulianmarias.es>
+Date:   Tue Jan 17 12:19:39 2023 +0100
+
+    Segunda modificacion al README
+
+commit 86a2944406b47390c8de2228d827743184da80b4
+Author: Aitor <aitor.diez@iesjulianmarias.es>
+Date:   Tue Jan 17 12:16:26 2023 +0100
+
+    contenido inicial de README
+user1@i504:~/Escritorio/proyectosGit/prueba01$ git log --oneline --graph --decorate --color
+* 00be618 (HEAD -> master) Otro commit mas
+* 3f67264 Tercer commit
+* f6c858c Segunda modificacion al README
+* 86a2944 contenido inicial de README
+user1@i504:~/Escritorio/proyectosGit/prueba01$ git log --pretty=format: --name-status
+M       README.md
+A       otro.txt
+
+A       index.html
+
+M       README.md
+
+A       README.md
+user1@i504:~/Escritorio/proyectosGit/prueba01$ git show
+commit 00be6183c0435f9650b1293431ea443f0bd1ad69 (HEAD -> master)
+Author: Aitor <aitor.diez@iesjulianmarias.es>
+Date:   Tue Jan 17 12:24:54 2023 +0100
+
+    Otro commit mas
+
+diff --git a/README.md b/README.md
+index a937373..d49dc56 100644
+--- a/README.md
++++ b/README.md
+@@ -1,2 +1,3 @@
+ #Demo de Git
+ segunda linea
++tercera linea
+diff --git a/otro.txt b/otro.txt
+new file mode 100644
+index 0000000..40de294
+--- /dev/null
++++ b/otro.txt
+@@ -0,0 +1 @@
++dsnhlkdsnjkndsv
+user1@i504:~/Escritorio/proyectosGit/prueba01$ git ls-files
+README.md
+index.html
+otro.txt
+user1@i504:~/Escritorio/proyectosGit/prueba01$ git show HEAD:README.md
+#Demo de Git
+segunda linea
+tercera linea
+user1@i504:~/Escritorio/proyectosGit/prueba01$ git show README.md
+commit 00be6183c0435f9650b1293431ea443f0bd1ad69 (HEAD -> master)
+Author: Aitor <aitor.diez@iesjulianmarias.es>
+Date:   Tue Jan 17 12:24:54 2023 +0100
+
+    Otro commit mas
+
+diff --git a/README.md b/README.md
+index a937373..d49dc56 100644
+--- a/README.md
++++ b/README.md
+@@ -1,2 +1,3 @@
+ #Demo de Git
+ segunda linea
++tercera linea
+user1@i504:~/Escritorio/proyectosGit/prueba01$ git diff HEAD ./README.md
+diff --git a/README.md b/README.md
+index d49dc56..5631716 100644
+--- a/README.md
++++ b/README.md
+@@ -1,3 +1,5 @@
+ #Demo de Git
+ segunda linea
+ tercera linea
++cuarta linea
++quinta linea
